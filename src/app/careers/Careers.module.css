@@ -1,0 +1,304 @@
+.main {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* 1. Open Doors Hero */
+.heroSection {
+  position: relative;
+  height: 200vh; /* Drives the split-text scroll */
+  background-color: var(--color-blue-dark);
+}
+
+.heroSticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.heroBg {
+  position: fixed; /* Fixed to sit behind the sticky content */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(80%) sepia(20%) hue-rotate(180deg);
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 48, 135, 0.9) 0%, rgba(0, 15, 45, 0.95) 100%);
+}
+
+.splitTextContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.splitWord {
+  font-size: clamp(80px, 15vw, 250px);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+  line-height: 0.85;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.heroContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+  max-width: 800px;
+}
+
+.heroLead {
+  font-size: clamp(20px, 4vw, 36px);
+  color: white;
+  font-weight: 400;
+  line-height: 1.5;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. Parallax Guiding Force */
+.parallaxSection {
+  position: relative;
+  min-height: 250vh; /* Drives the parallax overlap */
+  background-color: var(--color-gray-light);
+  overflow: hidden;
+  padding-bottom: 20vh;
+}
+
+.parallaxTitle {
+  position: sticky;
+  top: 15vh;
+  text-align: center;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 900;
+  color: var(--color-blue-dark);
+  z-index: 0;
+  opacity: 0.1;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.cardsContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30vh;
+}
+
+.parallaxCard {
+  width: 90%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 40px;
+  padding: 80px 60px;
+  margin-bottom: -150px; /* Force overlap */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardNumber {
+  position: absolute;
+  top: -20px;
+  right: 40px;
+  font-size: 150px;
+  font-weight: 900;
+  color: var(--color-cyan);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.cardTitle {
+  font-size: 48px;
+  color: var(--color-blue-dark);
+  margin-bottom: 24px;
+  font-weight: 800;
+  position: relative;
+  z-index: 2;
+}
+
+.cardText {
+  font-size: 24px;
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* 3. Magnetic CTA Section */
+.ctaSection {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-blue-dark);
+  position: relative;
+  z-index: 20; /* Sit above parallax */
+  box-shadow: 0 -20px 40px rgba(0,0,0,0.1);
+}
+
+.ctaContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.ctaHeading {
+  font-size: clamp(50px, 8vw, 100px);
+  color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Base state: Circular Button */
+.magneticButton {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  background-color: var(--color-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              background-color 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 174, 239, 0.3);
+}
+
+/* Hovered state: Pill expanding to reveal text */
+.magneticButton.hovered {
+  width: 500px; /* Expand to pill shape */
+  background-color: white;
+  box-shadow: 0 30px 60px rgba(255, 255, 255, 0.2);
+}
+
+.buttonLabel {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-blue-dark);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.magneticButton.hovered .buttonLabel {
+  opacity: 1;
+  transform: translateX(-40px); /* Make room for icon */
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.magneticButton.hovered .iconCircle {
+  color: var(--color-cyan);
+  transform: translateX(180px); /* Push icon to the right side of the pill */
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .heroLead {
+    font-size: 24px;
+  }
+  .parallaxCard {
+    padding: 60px 40px;
+  }
+  .cardTitle {
+    font-size: 36px;
+  }
+  .cardNumber {
+    font-size: 100px;
+  }
+  .magneticButton.hovered {
+    width: 350px;
+  }
+  .buttonLabel {
+    font-size: 18px;
+  }
+  .magneticButton.hovered .iconCircle {
+    transform: translateX(120px);
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    padding-top: 10vh;
+  }
+  .parallaxCard {
+    margin-bottom: -50px; /* Less severe overlap on mobile */
+    padding: 40px 30px;
+    border-radius: 20px;
+  }
+  .cardTitle {
+    font-size: 28px;
+  }
+  .cardText {
+    font-size: 18px;
+  }
+  .cardNumber {
+    font-size: 80px;
+    right: 20px;
+  }
+  .ctaHeading {
+    text-align: center;
+  }
+  /* Disable magnetic expand on very small mobile for usability */
+  .magneticButton.hovered {
+    width: 300px;
+  }
+  .magneticButton.hovered .iconCircle {
+    transform: translateX(100px);
+  }
+}

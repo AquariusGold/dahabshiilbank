@@ -1,0 +1,393 @@
+.main {
+  width: 100%;
+  background-color: #000a08;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* 1. Green Horizon Hero */
+.heroSection {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroImgContainer {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: 0;
+}
+
+.heroImg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 15, 8, 0.4) 0%, rgba(0, 15, 8, 0.95) 100%);
+  z-index: 1;
+}
+
+.heroLayout {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(82, 183, 136, 0.1);
+  color: #52B788;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(82, 183, 136, 0.3);
+}
+
+.title {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 950;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, white 0%, #b7e4c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #52B788;
+  color: #000;
+  padding: 20px 44px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(82, 183, 136, 0.3);
+}
+
+/* 2. Visualizer Section */
+.visualizerSection {
+  padding: 120px 40px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionHeader h2 {
+  font-size: 56px;
+  font-weight: 900;
+}
+
+.equipContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 60px;
+}
+
+.equipNav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.equipNav button {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.equipNav button.activeNav {
+  background: rgba(82, 183, 136, 0.1);
+  border-color: #52B788;
+  color: #52B788;
+  transform: translateX(10px);
+}
+
+.equipNav span {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.equipDisplay {
+  height: 400px;
+}
+
+.displayCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.displayImage {
+  position: relative;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03));
+}
+
+.displayText {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.displayText h3 {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.displayText p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.impactBadge {
+  background: rgba(255, 195, 0, 0.1);
+  color: #FFC300;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+/* 3. Cycle Section */
+.cycleSection {
+  padding: 120px 40px;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.cycleLayout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.cycleText h2 {
+  font-size: 56px;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.cycleText p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40px;
+}
+
+.benefitList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cycleArena {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cycleWrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.phaseNode {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Position nodes in circle */
+.phaseNode:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.phaseNode:nth-child(2) { top: 50%; right: 0; transform: translate(50%, -50%); }
+.phaseNode:nth-child(3) { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.phaseNode:nth-child(4) { top: 50%; left: 0; transform: translate(-50%, -50%); }
+
+.phaseIcon { margin-bottom: 4px; }
+.phaseLabel { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+.cycleLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* 4. Requirements Section */
+.reqSection {
+  padding: 120px 40px;
+}
+
+.reqHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.reqHeader h2 {
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.reqGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.reqCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.reqIcon {
+  color: #52B788;
+  margin-bottom: 24px;
+}
+
+.reqCard h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.reqCard p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.finalContact {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.contactBtn {
+  font-size: 24px;
+  font-weight: 900;
+  color: #52B788;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .equipContainer, .cycleLayout, .reqGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 40px;
+  }
+  .displayCard {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .displayImage {
+    height: 250px;
+  }
+  .displayText {
+    padding: 30px;
+  }
+}

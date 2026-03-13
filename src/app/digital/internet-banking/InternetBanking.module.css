@@ -1,0 +1,397 @@
+.main {
+  width: 100%;
+  background-color: #0f1115;
+  color: white;
+  overflow-x: hidden;
+  --color-cyan: #00AEEF;
+  --color-dark: #1A1A1A;
+}
+
+/* Typography Utility */
+.textCyan {
+  color: var(--color-cyan);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 174, 239, 0.1);
+  color: var(--color-cyan);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionHeader h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin-top: 16px;
+}
+
+/* 1. Hero Section */
+.heroSection {
+  height: 200vh; /* Extra height for scroll-jacking effect */
+  position: relative;
+  background: radial-gradient(circle at center top, rgba(0, 174, 239, 0.05) 0%, transparent 50%);
+}
+
+.heroSticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.heroContent {
+  text-align: center;
+  position: absolute;
+  top: 15vh;
+  z-index: 10;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 950;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 3D Laptop */
+.laptopStage {
+  position: absolute;
+  bottom: -15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+
+.laptopWrapper {
+  position: relative;
+  width: 800px;
+  height: 500px;
+}
+
+.laptopBase {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to bottom, #2a2a2a, #111);
+  border-radius: 20px 20px 40px 40px;
+  transform: rotateX(80deg);
+  transform-origin: bottom center;
+  border-top: 2px solid #555;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard {
+  width: 80%;
+  height: 50%;
+  background: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
+}
+
+.trackpad {
+  width: 25%;
+  height: 20%;
+  background: #222;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.laptopLid {
+  position: absolute;
+  bottom: 60px; /* Aligns with base hinge */
+  width: 100%;
+  height: 500px;
+  background: #2a2a2a;
+  border-radius: 20px;
+  border: 4px solid #444;
+  padding: 10px;
+  box-shadow: 0 -20px 50px rgba(0, 174, 239, 0.1);
+}
+
+.screenBezel {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.screenContent {
+  width: 100%;
+  height: 100%;
+  background: #0a0e14;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Simulated UI inside screen */
+.dashHeader { height: 40px; background: #11151c; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid #222; }
+.dashLogo { font-size: 12px; font-weight: 800; color: white; }
+.dashUser { width: 20px; height: 20px; background: #333; border-radius: 50%; }
+
+.dashBody { flex: 1; display: flex; }
+.dashSidebar { width: 60px; background: #0c1016; border-right: 1px solid #222; padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+.dashItem { width: 100%; height: 30px; background: rgba(255,255,255,0.05); border-radius: 4px; }
+
+.dashMain { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+.dashChart { flex: 2; background: rgba(0, 174, 239, 0.05); border: 1px solid rgba(0, 174, 239, 0.2); border-radius: 8px; position: relative; overflow: hidden; }
+.sparkline { width: 100%; height: 100%; }
+
+.dashGrid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.dashStat { background: #11151c; border: 1px solid #222; border-radius: 8px; }
+
+/* 2. Map Section */
+.mapSection {
+  padding: 120px 40px;
+  background: #0c0e12;
+}
+
+.mapContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mapText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+.mapText h2 { font-size: 40px; font-weight: 900; margin-bottom: 20px; }
+.mapText p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+.mapVisual {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: radial-gradient(circle at center, rgba(0, 174, 239, 0.05) 0%, transparent 70%);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.worldImg {
+  object-fit: contain;
+  opacity: 0.15;
+  filter: invert(1);
+}
+
+.mapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.dataLine {
+  fill: none;
+  stroke: var(--color-cyan);
+  stroke-width: 0.5;
+  stroke-dasharray: 4;
+  animation: dash 20s linear infinite;
+  opacity: 0.5;
+}
+
+.nodePoint {
+  fill: var(--color-cyan);
+  filter: drop-shadow(0 0 4px var(--color-cyan));
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes dash { to { stroke-dashoffset: 200; } }
+@keyframes pulse { to { fill: #fff; r: 1.5; } }
+
+
+/* 3. Enterprise Tools Grid */
+.toolsSection {
+  padding: 120px 40px;
+}
+
+.toolsGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.toolCard {
+  background: #14171d;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.toolCard:hover {
+  transform: scale(0.98);
+  border-color: rgba(0, 174, 239, 0.3);
+}
+
+.tIcon {
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 174, 239, 0.1);
+  color: var(--color-cyan);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.tContent { z-index: 2; }
+.tContent h3 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+.tContent p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+.tGlow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: var(--color-cyan);
+  filter: blur(80px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.toolCard:hover .tGlow { opacity: 0.15; }
+
+
+/* 4. Secure Gateway CTA */
+.gatewaySection {
+  padding: 120px 40px;
+  background: #0a0c0f;
+}
+
+.gatewayBox {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.shieldIcon { color: var(--color-cyan); margin-bottom: 24px; }
+
+.gateInfo h2 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+.gateInfo p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 30px; line-height: 1.6;}
+
+.secList { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.secList li { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; color: #ddd; }
+.secList li svg { color: var(--color-cyan); }
+
+.gateMockup {
+  perspective: 1000px;
+}
+
+.loginPanel {
+  background: #14171d;
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  transform: rotateY(-5deg);
+  transition: transform 0.4s ease;
+}
+
+.gateMockup:hover .loginPanel { transform: rotateY(0deg); }
+
+.lpHeader { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 40px; color: #fff; font-weight: 800; font-size: 18px; }
+.lpHeader svg { color: var(--color-cyan); }
+
+.lpBody { display: flex; flex-direction: column; gap: 20px; }
+.lpInput { height: 50px; background: #0c0e12; border: 1px solid #333; border-radius: 8px; display: flex; align-items: center; padding: 0 16px; color: rgba(255,255,255,0.4); font-size: 14px; }
+
+.lpBtn {
+  background: var(--color-cyan);
+  color: #000;
+  border: none;
+  height: 50px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+}
+
+.lpBtn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 174, 239, 0.2); }
+
+.lpFooter { text-align: center; margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.4); }
+.lpLink { color: var(--color-cyan); text-decoration: none; margin-left: 8px; font-weight: 700; }
+
+/* 5. Help Footer */
+.helpSection {
+  padding: 80px 40px;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+.helpSection p { font-size: 18px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+.emailBtn { display: inline-block; font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; border-bottom: 2px solid var(--color-cyan); padding-bottom: 4px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .laptopWrapper { transform: scale(0.6); }
+  .toolsGrid, .gatewayBox { grid-template-columns: 1fr; }
+  .loginPanel { transform: none; }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 40px; }
+  .toolCard { flex-direction: column; align-items: flex-start; }
+}

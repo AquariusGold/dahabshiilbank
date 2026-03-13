@@ -1,0 +1,344 @@
+.main {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-blue-dark);
+  color: white;
+
+  /* Dahabo Local Variables */
+  --color-dahabo-gold: #D4AF37;
+  --color-dahabo-gold-light: #F3E5AB;
+}
+
+/* 1. Secure Legacy Hero */
+.heroSection {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: black;
+}
+
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 15, 30, 0.95) 0%, rgba(0, 15, 30, 0.6) 100%);
+  z-index: 1;
+}
+
+.heroLayout {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 160px 40px 100px 40px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0, 174, 239, 0.1);
+  color: var(--color-cyan);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.title {
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  background: linear-gradient(135deg, white 0%, var(--color-dahabo-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+  max-width: 600px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-cyan);
+  color: var(--color-blue-dark);
+  padding: 18px 40px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 174, 239, 0.3);
+}
+
+
+/* 2. Wealth Accumulation Visualizer */
+.visualizerSection {
+  padding: 120px 40px;
+  background: rgba(0, 15, 30, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.visLayout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.visText h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 16px 0;
+}
+
+.visText p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 40px;
+}
+
+.visHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.highItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.highIcon {
+  color: var(--color-dahabo-gold);
+}
+
+.highItem span {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.chartContainer {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 60px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.growthSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+}
+
+.chartLabels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.labelItem {
+  position: absolute;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-dahabo-gold-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+
+/* 3. Features & Requirements Grid */
+.detailsSection {
+  padding: 120px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detailsLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.panelIcon {
+  color: var(--color-dahabo-gold);
+}
+
+.panelHeader h3 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.glassFeature {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.glassFeature:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 174, 239, 0.3);
+}
+
+.featIcon {
+  color: var(--color-cyan);
+}
+
+.glassFeature span {
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Onboarding Checklist */
+.requirementsPanel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 50px;
+  border-radius: 30px;
+}
+
+.checkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.checkList li {
+  display: flex;
+  gap: 20px;
+}
+
+.checkBullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-dahabo-gold);
+  margin-top: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--color-dahabo-gold);
+}
+
+.checkText strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.checkText p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.bottomDisclaimer {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  text-align: center;
+}
+
+.bottomDisclaimer p {
+  margin: 0;
+}
+
+/* Responsive Configs */
+@media (max-width: 1024px) {
+  .visLayout, .detailsLayout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .chartContainer {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 48px;
+  }
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+  .requirementsPanel {
+    padding: 30px;
+  }
+}

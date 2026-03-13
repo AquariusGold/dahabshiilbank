@@ -1,0 +1,370 @@
+.main {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-blue-dark);
+  color: white;
+  
+  /* Custom Dahabo Variables */
+  --color-dahabo-gold: #D4AF37;
+  --color-dahabo-gold-light: #F3E5AB;
+  --color-dahabo-glow: rgba(212, 175, 55, 0.3);
+}
+
+/* 1. The Gold Standard Hero */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: black;
+}
+
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 15, 30, 0.95) 0%, rgba(212, 175, 55, 0.2) 100%);
+  z-index: 1;
+}
+
+/* Gold Dust Particles */
+.goldDustContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dustParticle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-dahabo-gold-light);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px var(--color-dahabo-gold);
+  animation: floatUp 8s infinite linear;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+}
+
+.heroLayout {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 160px 40px 100px 40px;
+}
+
+.heroContent {
+  max-width: 700px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0, 174, 239, 0.15); /* Corporate Cyan tint */
+  color: var(--color-cyan);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.title {
+  font-family: var(--font-outfit), serif;
+  font-size: clamp(56px, 8vw, 90px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  background: linear-gradient(135deg, var(--color-dahabo-gold-light), var(--color-dahabo-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.subtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+  font-weight: 300;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-cyan);
+  color: var(--color-blue-dark);
+  padding: 18px 40px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 174, 239, 0.3);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 174, 239, 0.5);
+}
+
+
+/* 2. The Value Proposition */
+.valueSection {
+  padding: 120px 40px;
+  position: relative;
+  background: linear-gradient(180deg, var(--color-blue-dark) 0%, rgba(10, 31, 68, 1) 100%);
+  overflow: hidden;
+}
+
+.valueGlow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-dahabo-glow) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.valueLayout {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.valueLeft h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: white;
+  margin: 0;
+}
+
+.valueRight {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.valueItem {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.valueIcon {
+  color: var(--color-dahabo-gold);
+  background: rgba(212, 175, 55, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.valueItem h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 12px 0;
+}
+
+.valueItem p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* 3. The Exclusive Portfolio Grid */
+.portfolioSection {
+  padding: 100px 40px 160px 40px;
+  background: rgba(10, 31, 68, 1);
+}
+
+.portfolioHeader {
+  text-align: center;
+  margin-bottom: 80px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolioHeader h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 16px 0;
+}
+
+.portfolioHeader p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.portfolioGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.portfolioCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 50px 40px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.portfolioCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.portfolioCard:hover .cardGlow {
+  opacity: 1;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: var(--color-dahabo-gold);
+}
+
+.cardArrow {
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.portfolioCard:hover .cardArrow {
+  opacity: 1;
+  transform: translate(5px, -5px);
+}
+
+.cardContent h3 {
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 16px 0;
+}
+
+.cardContent p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.comingSoonBadge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 24px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive Configs */
+@media (max-width: 1024px) {
+  .valueLayout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .portfolioGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 56px;
+  }
+  .valueLeft h2 {
+    font-size: 40px;
+  }
+  .portfolioCard {
+    padding: 30px 20px;
+  }
+}

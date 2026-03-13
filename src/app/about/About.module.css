@@ -1,0 +1,442 @@
+.main {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-blue-dark);
+  color: white;
+}
+
+/* 1. Solid Foundation Hero */
+.heroSection {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure background text doesn't spill out */
+  background: black;
+  perspective: 1000px;
+  z-index: 50; /* Above timeline to avoid bleeding */
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroVideoMask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.3; /* Subtle background presence */
+}
+
+.heroTitle {
+  font-size: clamp(80px, 20vw, 220px);
+  font-weight: 950;
+  text-transform: uppercase;
+  color: white;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  margin: 0;
+  text-align: center;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 30; /* Ensure content is above the background text */
+  text-align: center;
+  padding: 0 20px;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.8) 0%, transparent 70%); /* Contrast boost */
+}
+
+.heroYear {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-cyan);
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.heroSubtitle {
+  font-size: clamp(18px, 2vw, 24px);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+  text-shadow: 0 10px 30px rgba(0,0,0,1); /* Heavy shadow for decoupling from background text */
+}
+
+/* Timeline Section */
+.timelineSection {
+  padding: 120px 40px; /* Reduced from 200px */
+  background: #000;
+  position: relative;
+}
+
+.timelineContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-50%);
+}
+
+.timelineProgress {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-cyan), transparent);
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 8px var(--color-cyan));
+}
+
+/* 2. Global Connectivity Map */
+.mapSection {
+  padding: 160px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.mapHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.mapHeader h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+}
+
+.mapHeader p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.worldMapBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Fallback dotted map pattern for abstract feel */
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.arcOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.arcPath {
+  stroke-dasharray: 5, 5;
+  fill: none;
+}
+
+.mapNode {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-cyan);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.nodePulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 174, 239, 0.4);
+  border-radius: 50%;
+  animation: pulseNode 2s ease-out infinite;
+}
+
+@keyframes pulseNode {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+.nodeLabel {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.timelineItem {
+  position: relative;
+  width: 50%;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.timelineItem:nth-child(even) {
+  align-self: flex-end;
+  padding-right: 0;
+  padding-left: 80px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.timelineDot {
+  position: absolute;
+  right: -8px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: var(--color-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--color-cyan);
+}
+
+.timelineItem:nth-child(even) .timelineDot {
+  right: auto;
+  left: -8px;
+}
+
+.timelineDate {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--color-cyan);
+  margin-bottom: 10px;
+}
+
+.timelineTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.timelineDesc {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* Impact Grid */
+.principlesSection {
+  padding: 120px 0;
+  background: linear-gradient(180deg, var(--color-blue-dark) 0%, rgba(0, 15, 30, 1) 100%);
+  position: relative;
+  z-index: 10;
+}
+
+.impactSection {
+  padding: 160px 40px;
+  background: var(--color-blue-dark);
+}
+
+.impactHeader {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.impactHeader h2 {
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.splitLayout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  padding: 0 40px; /* Internal padding to protect content */
+}
+
+.impactGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.impactItem {
+  position: relative;
+  height: 450px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.impactImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.impactItem:hover .impactImage {
+  transform: scale(1.1);
+}
+
+.impactOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  z-index: 5;
+}
+
+.impactContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px;
+  z-index: 10;
+}
+
+.impactContent h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.impactContent p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.impactIcon {
+  color: var(--color-cyan);
+  margin-bottom: 20px;
+}
+
+/* Call to Action */
+.ctaSection {
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaLiquid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: clamp(40px, 8vw, 80px);
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.ctaButton {
+  padding: 20px 60px;
+  background: var(--color-cyan);
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ctaButton:hover {
+  background: white;
+  color: var(--color-blue-dark);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 174, 239, 0.3);
+}
+
+@media (max-width: 900px) {
+  .impactGrid {
+    grid-template-columns: 1fr;
+  }
+  .timelineItem {
+    width: 100%;
+    padding-right: 0 !important;
+    padding-left: 60px !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  .timelineLine, .timelineProgress {
+    left: 20px;
+    transform: none;
+  }
+  .timelineDot {
+    left: 12px !important;
+    right: auto !important;
+  }
+}

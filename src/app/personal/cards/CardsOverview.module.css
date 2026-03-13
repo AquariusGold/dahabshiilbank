@@ -1,0 +1,379 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.particleCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Background Typography */
+.bgTextContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.bgTitle {
+  font-size: 25vw;
+  font-weight: 950;
+  color: white;
+  margin: 0;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+.experienceLayout {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 80px;
+}
+
+/* 1. The Magnetic Deck */
+.deckContainer {
+  width: 60%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+}
+
+.cardsTrack {
+  display: flex;
+  gap: 40px;
+  transform-style: preserve-3d;
+}
+
+.cardWrapper {
+  width: 320px;
+  height: 480px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: z-index 0.3s;
+}
+
+.cardActive {
+  z-index: 100;
+}
+
+.cardInner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+}
+
+/* Theme Colors */
+.mastercardTheme {
+  background: linear-gradient(135deg, #111 0%, #001a33 100%);
+  border-color: rgba(0, 174, 239, 0.3);
+}
+
+.dahaboTheme {
+  background: linear-gradient(135deg, #111 0%, #1a1a00 100%);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.businessTheme {
+  background: linear-gradient(135deg, #111 0%, #0d0d0d 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Holographic Shimmer */
+.shimmerLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cardWrapper:hover .shimmerLayer {
+  animation: shimmerMove 1.5s infinite;
+}
+
+@keyframes shimmerMove {
+  0% { background-position: -200% -200%; }
+  100% { background-position: 200% 200%; }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.cardLogo {
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+.cardType {
+  font-weight: 700;
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cardVisual {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.cardChip {
+  width: 50px;
+  height: 40px;
+  background: linear-gradient(135deg, #999 0%, #ccc 100%);
+  border-radius: 8px;
+  opacity: 0.8;
+}
+
+.visIcon {
+  width: 60px;
+  height: 600px;
+  opacity: 0.2;
+}
+
+.cardFooter {
+  z-index: 10;
+}
+
+.cardNumber {
+  font-family: monospace;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.cardHolder {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 2. Detail Overlay */
+.detailOverlay {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.detailContent {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 60px;
+  border-radius: 40px;
+  width: 100%;
+}
+
+.badge {
+  color: var(--color-cyan);
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.detailContent h3 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 40px 0;
+}
+
+.featureGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan);
+}
+
+.featureItem span {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.primaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--color-cyan);
+  color: #000;
+  padding: 20px 40px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 174, 239, 0.4);
+}
+
+/* Manual Controls */
+.controls {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  z-index: 100;
+}
+
+.controlBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.controlBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.indicators {
+  display: flex;
+  gap: 12px;
+}
+
+.indicator {
+  width: 30px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicatorActive {
+  background: var(--color-cyan);
+  width: 60px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .experienceLayout {
+    flex-direction: column;
+    padding: 100px 40px;
+    height: auto;
+  }
+  .deckContainer, .detailOverlay {
+    width: 100%;
+  }
+  .deckContainer {
+    height: 500px;
+  }
+  .main {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  .controls {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 40px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .bgTitle {
+    font-size: 40vw;
+  }
+  .cardsTrack {
+    gap: 20px;
+  }
+  .cardWrapper {
+    width: 260px;
+    height: 400px;
+  }
+  .detailContent h3 {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,445 @@
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-blue-dark);
+  color: white;
+  font-family: inherit;
+}
+
+/* 1. Hero Section */
+.heroSection {
+  position: relative;
+  width: 100%;
+  padding: 180px 20px 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 15, 45, 1) 0%, rgba(0, 48, 135, 0.4) 100%);
+}
+
+.heroGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 174, 239, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroBadge {
+  background: rgba(0, 174, 239, 0.1);
+  color: var(--color-cyan);
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.heroTitle {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 900;
+  margin: 0 0 40px 0;
+  line-height: 1.1;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-cyan);
+}
+
+.searchInput {
+  width: 100%;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  padding: 0 30px 0 70px;
+  font-size: 20px;
+  color: white;
+  outline: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 30px rgba(0, 174, 239, 0.2);
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* 2. Main Content Setup */
+.contentSection {
+  width: 100%;
+  padding: 0 20px 120px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.layoutGrid {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Sidebar / Menu */
+.sidebar {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryMenu {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.menuTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
+}
+
+.categoryBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+  position: relative;
+  text-align: left;
+}
+
+.categoryBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.categoryBtn.active {
+  background: rgba(0, 174, 239, 0.1);
+  color: white;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.catIconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  color: var(--color-cyan);
+}
+
+.categoryBtn.active .catIconWrapper {
+  background: var(--color-cyan);
+  color: var(--color-blue-dark);
+}
+
+.catText {
+  font-size: 16px;
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+.catArrow {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.categoryBtn.active .catArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contactUpsell {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.upsellIcon {
+  color: var(--color-cyan);
+  margin-bottom: 16px;
+}
+
+.contactUpsell h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.contactUpsell p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.upsellBtn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.upsellBtn:hover {
+  background: white;
+  color: var(--color-blue-dark);
+}
+
+/* Search Results Info */
+.searchResultsInfo {
+  background: rgba(0, 174, 239, 0.1);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+}
+
+.searchResultsInfo h3 {
+  color: var(--color-cyan);
+  margin: 0 0 10px 0;
+}
+
+.searchResultsInfo p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 20px 0;
+}
+
+.clearSearchBtn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.clearSearchBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* FAQs List */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Accordion Item */
+.accordionItem {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.accordionItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.accordionItem.itemOpen {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+}
+
+.questionText {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  padding-right: 20px;
+  line-height: 1.4;
+}
+
+.iconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan);
+  flex-shrink: 0;
+}
+
+.accordionItem.itemOpen .iconBox {
+  background: var(--color-cyan);
+  color: var(--color-blue-dark);
+}
+
+.accordionBody {
+  overflow: hidden;
+}
+
+.answerContent {
+  padding: 0 30px 30px 30px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.answerContent p {
+  margin: 0;
+}
+
+/* No Results */
+.noResults {
+  text-align: center;
+  padding: 80px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.noResultsIcon {
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+}
+
+.noResults h3 {
+  font-size: 24px;
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.noResults p {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .sidebar {
+    position: static;
+  }
+  .categoryMenu {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 20px;
+    gap: 10px;
+    scrollbar-width: none; /* Hide scrollbar for clean layout */
+  }
+  .categoryMenu::-webkit-scrollbar {
+    display: none;
+  }
+  .menuTitle {
+    display: none; /* Hide title on mobile horizontal layout */
+  }
+  .categoryBtn {
+    width: auto;
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+  .contactUpsell {
+    display: none; /* Hide desktop upsell on mobile to save space */
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 140px 20px 60px 20px;
+  }
+  .heroTitle {
+    font-size: 32px;
+  }
+  .searchInput {
+    height: 60px;
+    font-size: 16px;
+  }
+  .questionText {
+    font-size: 18px;
+  }
+  .accordionHeader {
+    padding: 20px;
+  }
+  .answerContent {
+    padding: 0 20px 20px 20px;
+  }
+}

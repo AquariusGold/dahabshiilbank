@@ -1,0 +1,380 @@
+.main {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-blue-dark);
+  color: white;
+}
+
+/* 1. Architectural Dream Hero */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: black;
+}
+
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  will-change: transform, opacity;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 15, 30, 0.95) 0%, rgba(0, 15, 30, 0.6) 50%, rgba(0, 15, 30, 0.3) 100%);
+  z-index: 1;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroLayout {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 160px 40px 100px 40px;
+}
+
+.heroText {
+  max-width: 650px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0, 174, 239, 0.15);
+  color: var(--color-cyan);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.title {
+  font-size: clamp(44px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-cyan);
+  color: var(--color-blue-dark);
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 174, 239, 0.4);
+}
+
+
+/* 2. Transparent Advantage Grid */
+.advantageSection {
+  padding: 120px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advantageHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.advantageHeader h2 {
+  font-size: 42px;
+  font-weight: 900;
+  margin: 0 0 16px 0;
+}
+
+.advantageHeader p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.advantageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.advCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 50px 40px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.advCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(0, 174, 239, 0.3);
+  transform: translateY(-5px);
+}
+
+.advIcon {
+  color: var(--color-cyan);
+  margin-bottom: 24px;
+  transition: transform 0.4s ease;
+}
+
+.advCard:hover .advIcon {
+  transform: scale(1.1);
+}
+
+.advCard h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.advCard p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+
+/* 3. Interactive Property Portfolios (Tabs) */
+.portfolioSection {
+  padding: 100px 40px 160px 40px;
+  background: linear-gradient(180deg, rgba(0, 15, 30, 1) 0%, black 100%);
+  position: relative;
+}
+
+.portHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.portHeader h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 16px 0;
+}
+
+.portHeader p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Tab Switcher UI */
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.tabTrack {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  padding: 8px;
+  display: flex;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabBtn {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+  width: 250px;
+  justify-content: center;
+}
+
+.tabBtn.tabActive {
+  color: var(--color-blue-dark);
+}
+
+.tabIndicator {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: calc(50% - 8px);
+  height: calc(100% - 16px);
+  background: white;
+  border-radius: 100px;
+  z-index: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Tab Content */
+.tabContentArea {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.portfolioPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 40px;
+  align-items: center;
+}
+
+.panelImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.panelImage {
+  object-fit: cover;
+}
+
+.panelText h3 {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  color: var(--color-cyan);
+}
+
+.panelText p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+}
+
+.panelList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panelList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: white;
+}
+
+.listIcon {
+  color: var(--color-cyan);
+}
+
+.applyBtn {
+  width: 100%;
+  padding: 20px;
+  border-radius: 100px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.applyBtn:hover {
+  background: white;
+  color: var(--color-blue-dark);
+}
+
+
+/* Responsive Configs */
+@media (max-width: 1024px) {
+  .advantageGrid {
+    grid-template-columns: 1fr;
+  }
+  .portfolioPanel {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .panelImageWrapper {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 40px;
+  }
+  .tabTrack {
+    flex-direction: column;
+    padding: 0;
+    background: transparent;
+    border: none;
+    gap: 10px;
+  }
+  .tabBtn {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .tabBtn.tabActive {
+    background: white;
+    color: var(--color-blue-dark);
+  }
+  .tabIndicator {
+    display: none; /* Hide animated pill on mobile stacked layout */
+  }
+  .portfolioPanel {
+    padding: 20px;
+  }
+  .panelImageWrapper {
+    height: 250px;
+  }
+}

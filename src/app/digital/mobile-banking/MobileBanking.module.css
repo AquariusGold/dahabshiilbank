@@ -1,0 +1,365 @@
+.main {
+  width: 100%;
+  background-color: #05060f; /* Deep Midnight Blue */
+  color: white;
+  overflow-x: hidden;
+  --color-cyan: #00AEEF;
+  --border-light: rgba(255, 255, 255, 0.1);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 174, 239, 0.1);
+  color: var(--color-cyan);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionHeader h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; }
+.sectionHeader p { font-size: 18px; color: rgba(255,255,255,0.6); }
+
+/* 1. Ambient Hero */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at bottom right, rgba(0, 174, 239, 0.1) 0%, transparent 60%);
+}
+
+.bgTypography {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 25vw; /* Massive scaling text */
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.heroLayout {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.heroContent {
+  max-width: 600px;
+}
+
+.title {
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ambientDevice {
+  position: relative;
+  width: 240px;
+  height: 480px;
+  background: rgba(10, 12, 20, 0.8);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+}
+
+.ambientScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+
+.deviceIcon {
+  color: var(--color-cyan);
+}
+
+.ambientScreen span {
+  font-family: monospace;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.devicePulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at center, rgba(0, 174, 239, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulseAmbient 4s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes pulseAmbient {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+
+/* 2. Ledger Bento Grid */
+.ledgerSection {
+  padding: 160px 40px;
+  background: #03040a;
+}
+
+.gridContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.gridBox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gridBox:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(0, 174, 239, 0.5);
+}
+
+.gbScanline {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 174, 239, 0.2), transparent);
+  transition: top 0s;
+  pointer-events: none;
+}
+
+.gridBox:hover .gbScanline {
+  top: 100%;
+  transition: top 1.5s linear;
+}
+
+.gbHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.gbIcon {
+  width: 56px;
+  height: 56px;
+  background: #111;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan);
+  transition: transform 0.3s ease;
+}
+
+.gridBox:hover .gbIcon {
+  transform: translateY(-4px);
+}
+
+.gbHeader h3 { font-size: 24px; font-weight: 800; }
+.gridBox p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+
+/* 3. Horizontal Scroll Journey */
+.journeyWrapper {
+  height: 300vh; /* Creates scrollable space */
+  position: relative;
+  background: #05060f;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.journeySticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 40px;
+}
+
+.journeyHeader {
+  margin-bottom: 60px;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jhTitle { font-size: 48px; font-weight: 900; }
+.jhSubtitle { font-size: 18px; color: var(--color-cyan); font-family: monospace; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px;}
+
+.journeyTrack {
+  display: flex;
+  gap: 40px;
+  width: 300vw; /* 3 panels * 100vw */
+}
+
+.journeyPanel {
+  width: 100vw; /* Takes up screen width */
+  max-width: 600px; /* But constrains content */
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 400px;
+  position: relative;
+}
+
+.jpIcon {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  color: rgba(255,255,255,0.1);
+}
+
+.jpStep {
+  font-size: 64px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.jpContent h3 { font-size: 32px; font-weight: 800; margin-bottom: 16px; }
+.jpContent p { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+
+/* 4. The Horizon Footer */
+.footerSection {
+  padding: 160px 40px;
+  background: #03040a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footerContent {
+  max-width: 700px;
+}
+
+.footerTitle { font-size: 56px; font-weight: 900; margin-bottom: 24px; }
+.footerText { font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 48px; line-height: 1.6; }
+
+.footerActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.pillBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.pillBtn:hover {
+  background: var(--color-cyan);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 174, 239, 0.3);
+}
+
+.textBtn {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.textBtn:hover {
+  border-color: var(--color-cyan);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .heroLayout, .gridContainer { grid-template-columns: 1fr; gap: 40px; text-align: center;}
+  .ambientDevice { margin: 0 auto; }
+  .bgTypography { font-size: 35vw; top: 5%; }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 40px; }
+  .footerActions { flex-direction: column; gap: 20px; }
+  .pillBtn { width: 100%; justify-content: center; }
+  .journeyPanel { padding: 40px; min-height: 350px; }
+  .jpStep { font-size: 48px; }
+}
