@@ -1,243 +1,406 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
-  Laptop, 
   Globe, 
   ShieldCheck, 
-  Key, 
   ArrowRightLeft, 
   Briefcase,
   Monitor,
   Lock,
   ChevronRight,
-  Shield,
-  Fingerprint,
-  CheckCircle2
+  CheckCircle2,
+  BarChart3,
+  Clock,
+  CreditCard,
+  FileText,
+  Smartphone,
+  Users,
+  Zap,
+  Send,
+  TrendingUp,
+  ArrowUpRight,
+  ArrowDownLeft
 } from "lucide-react";
 import styles from "./InternetBanking.module.css";
-import Image from "next/image";
 import Link from "next/link";
 
-// 1. Interactive Laptop Hero
-function CommandCenterHero() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+  })
+};
 
-  // Laptop opens as you scroll down
-  const lidRotateX = useTransform(scrollYProgress, [0, 0.4], [80, 0]);
-  const laptopZ = useTransform(scrollYProgress, [0, 0.5], [-200, 0]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
+/* ─────────────────────────────────────────────
+   1. HERO — Dashboard Preview
+   ───────────────────────────────────────────── */
+function Hero() {
   return (
-    <section className={styles.heroSection} ref={containerRef}>
-      <div className={styles.heroSticky}>
-        <motion.div 
-          className={styles.heroContent}
-          style={{ opacity: textOpacity }}
-        >
-          <div className={styles.badge}><Monitor size={16} /> Enterprise Gateway</div>
-          <h1 className={styles.title}>Total Control.<br/><span className={styles.textCyan}>Infinite Reach.</span></h1>
-          <p className={styles.subtitle}>
-            Dahabshil Internet Banking provides a comprehensive, secure environment to manage your enterprise and personal wealth from any desktop.
-          </p>
+    <section className={styles.hero}>
+      <motion.div
+        className={styles.heroInner}
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+      >
+        <motion.div className={styles.heroBadge} variants={fadeUp} custom={0}>
+          <Monitor size={14} /> Internet Banking Platform
         </motion.div>
 
-        <div className={styles.laptopStage}>
-           <motion.div 
-            className={styles.laptopWrapper}
-            style={{ translateZ: laptopZ, rotateX: 10, transformStyle: "preserve-3d" }}
-           >
-              {/* Laptop Base (Keyboard area) */}
-              <div className={styles.laptopBase}>
-                 <div className={styles.keyboard} />
-                 <div className={styles.trackpad} />
+        <motion.h1 className={styles.heroTitle} variants={fadeUp} custom={1}>
+          Your Finances,{" "}
+          <span className={styles.heroGradient}>One Dashboard Away.</span>
+        </motion.h1>
+
+        <motion.p className={styles.heroSub} variants={fadeUp} custom={2}>
+          Manage accounts, send transfers, view real-time analytics, and control your wealth
+          from anywhere — all through our secure, enterprise-grade internet banking portal.
+        </motion.p>
+
+        <motion.div className={styles.heroActions} variants={fadeUp} custom={3}>
+          <Link href="/auth/signup" className={styles.btnPrimary}>
+            Get Started <ChevronRight size={16} />
+          </Link>
+          <Link href="/contact" className={styles.btnSecondary}>
+            Request Demo
+          </Link>
+        </motion.div>
+
+        {/* Dashboard Mockup */}
+        <motion.div
+          className={styles.dashboardPreview}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className={styles.dashboardFrame}>
+            {/* Browser chrome */}
+            <div className={styles.dashTitleBar}>
+              <div className={styles.dashDot} />
+              <div className={styles.dashDot} />
+              <div className={styles.dashDot} />
+              <div className={styles.dashUrl}>
+                <Lock size={10} style={{ marginRight: 6, opacity: 0.5 }} />
+                ebanking.dahabshiilbank.com/dashboard
+              </div>
+            </div>
+
+            <div className={styles.dashBody}>
+              {/* Sidebar */}
+              <div className={styles.dashSidebar}>
+                {["Dashboard", "Transfers", "Accounts", "Statements", "Cards", "Settings"].map((item, i) => (
+                  <div key={item} className={`${styles.dashSideItem} ${i === 0 ? styles.dashSideItemActive : ''}`}>
+                    <div className={styles.dashSideIcon} />
+                    {item}
+                  </div>
+                ))}
               </div>
 
-              {/* Laptop Lid (Screen) */}
-              <motion.div 
-                className={styles.laptopLid}
-                style={{ rotateX: lidRotateX, transformOrigin: "bottom center" }}
-              >
-                 <div className={styles.screenBezel}>
-                    <div className={styles.screenContent}>
-                       {/* Abstract Dashboard UI */}
-                       <div className={styles.dashHeader}>
-                          <div className={styles.dashLogo}>DBI Control</div>
-                          <div className={styles.dashUser} />
-                       </div>
-                       <div className={styles.dashBody}>
-                          <div className={styles.dashSidebar}>
-                             <div className={styles.dashItem} />
-                             <div className={styles.dashItem} />
-                             <div className={styles.dashItem} />
-                          </div>
-                          <div className={styles.dashMain}>
-                             <div className={styles.dashChart}>
-                                <svg viewBox="0 0 100 50" className={styles.sparkline}>
-                                   <path d="M0,40 Q10,20 20,30 T40,10 T60,25 T80,5 T100,15" fill="none" stroke="var(--color-cyan)" strokeWidth="2" />
-                                </svg>
-                             </div>
-                             <div className={styles.dashGrid}>
-                                <div className={styles.dashStat} />
-                                <div className={styles.dashStat} />
-                                <div className={styles.dashStat} />
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </motion.div>
-           </motion.div>
-        </div>
+              {/* Main content */}
+              <div className={styles.dashMain}>
+                <div className={styles.dashStatsRow}>
+                  <div className={styles.dashStatCard}>
+                    <div className={styles.dashStatLabel}>Total Balance</div>
+                    <div className={styles.dashStatValue}>$48,250</div>
+                    <div className={styles.dashStatChange}>↑ 12.4% this month</div>
+                  </div>
+                  <div className={styles.dashStatCard}>
+                    <div className={styles.dashStatLabel}>Income</div>
+                    <div className={styles.dashStatValue}>$12,800</div>
+                    <div className={styles.dashStatChange}>↑ 8.2%</div>
+                  </div>
+                  <div className={styles.dashStatCard}>
+                    <div className={styles.dashStatLabel}>Transfers</div>
+                    <div className={styles.dashStatValue}>24</div>
+                    <div className={styles.dashStatChange}>This week</div>
+                  </div>
+                </div>
+
+                <div className={styles.dashChartArea}>
+                  <svg className={styles.chartLine} viewBox="0 0 600 180" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#00AEEF" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#00AEEF" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,140 C40,120 80,90 120,100 C160,110 200,60 240,70 C280,80 320,30 360,45 C400,60 440,20 480,35 C520,50 560,25 600,15 L600,180 L0,180 Z" fill="url(#chartGrad)" />
+                    <path d="M0,140 C40,120 80,90 120,100 C160,110 200,60 240,70 C280,80 320,30 360,45 C400,60 440,20 480,35 C520,50 560,25 600,15" fill="none" stroke="#00AEEF" strokeWidth="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   2. STATS BAR
+   ───────────────────────────────────────────── */
+function StatsBar() {
+  const stats = [
+    { value: "99.9%",  label: "Uptime Guarantee" },
+    { value: "256‑bit", label: "SSL Encryption" },
+    { value: "24/7",   label: "Monitoring" },
+    { value: "<2s",    label: "Transfer Speed" }
+  ];
+
+  return (
+    <div className={styles.statsBar}>
+      {stats.map((s, i) => (
+        <motion.div
+          key={i}
+          className={styles.statItem}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ delay: i * 0.08, duration: 0.5 }}
+        >
+          <div className={styles.statNumber}>
+            <span className={styles.statCyan}>{s.value}</span>
+          </div>
+          <div className={styles.statLabel}>{s.label}</div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   3. FEATURE ROWS — Alternating Layout
+   ───────────────────────────────────────────── */
+function FeatureRows() {
+  return (
+    <section className={styles.featuresSection}>
+      <div className={styles.featuresInner}>
+
+        {/* Feature 1: Instant Transfers */}
+        <motion.div
+          className={styles.featureRow}
+          initial="hidden" whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          <div>
+            <motion.div className={styles.featureTag} variants={fadeUp} custom={0}>
+              <ArrowRightLeft size={14} /> Instant Transfers
+            </motion.div>
+            <motion.h2 className={styles.featureTitle} variants={fadeUp} custom={1}>
+              Send Money Anywhere,<br />In Seconds.
+            </motion.h2>
+            <motion.p className={styles.featureDesc} variants={fadeUp} custom={2}>
+              Execute domestic and international transfers instantly. Seamlessly integrate with
+              your e-Dahab mobile wallet, manage scheduled payments, and view real-time
+              transaction histories — all from one place.
+            </motion.p>
+            <motion.ul className={styles.featureChecks} variants={fadeUp} custom={3}>
+              <li><CheckCircle2 size={16} /> e-Dahab wallet integration</li>
+              <li><CheckCircle2 size={16} /> Scheduled & recurring transfers</li>
+              <li><CheckCircle2 size={16} /> Multi-currency support (USD, EUR, KES)</li>
+              <li><CheckCircle2 size={16} /> Real-time transaction tracking</li>
+            </motion.ul>
+          </div>
+
+          <motion.div className={styles.featureVisual} variants={fadeUp} custom={2}>
+            <div className={styles.featureCard}>
+              <div className={styles.transferMockup}>
+                <div className={styles.transferRow}>
+                  <div className={styles.transferIcon}><Send size={20} /></div>
+                  <div className={styles.transferDetails}>
+                    <div className={styles.transferName}>Mohamed Hassan</div>
+                    <div className={styles.transferSub}>e-Dahab Transfer • 2 min ago</div>
+                  </div>
+                  <div className={styles.transferAmountNeg}>-$350.00</div>
+                </div>
+                <div className={styles.transferDivider} />
+                <div className={styles.transferRow}>
+                  <div className={styles.transferIcon}><ArrowDownLeft size={20} /></div>
+                  <div className={styles.transferDetails}>
+                    <div className={styles.transferName}>Salary Deposit</div>
+                    <div className={styles.transferSub}>Company Payroll • Today</div>
+                  </div>
+                  <div className={styles.transferAmount}>+$4,200.00</div>
+                </div>
+                <div className={styles.transferDivider} />
+                <div className={styles.transferRow}>
+                  <div className={styles.transferIcon}><ArrowUpRight size={20} /></div>
+                  <div className={styles.transferDetails}>
+                    <div className={styles.transferName}>Rent Payment</div>
+                    <div className={styles.transferSub}>Scheduled • Tomorrow</div>
+                  </div>
+                  <div className={styles.transferAmountNeg}>-$800.00</div>
+                </div>
+                <div className={styles.transferDivider} />
+                <div className={styles.transferRow}>
+                  <div className={styles.transferIcon}><TrendingUp size={20} /></div>
+                  <div className={styles.transferDetails}>
+                    <div className={styles.transferName}>Business Revenue</div>
+                    <div className={styles.transferSub}>International • Yesterday</div>
+                  </div>
+                  <div className={styles.transferAmount}>+$12,500.00</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Feature 2: Security (Reversed) */}
+        <motion.div
+          className={styles.featureRowReversed}
+          initial="hidden" whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          <div>
+            <motion.div className={styles.featureTag} variants={fadeUp} custom={0}>
+              <ShieldCheck size={14} /> Bank-Grade Security
+            </motion.div>
+            <motion.h2 className={styles.featureTitle} variants={fadeUp} custom={1}>
+              Built for Trust.<br />Engineered for Safety.
+            </motion.h2>
+            <motion.p className={styles.featureDesc} variants={fadeUp} custom={2}>
+              Every session is protected by multi-layer security — from OTP verification to
+              biometric authentication and real-time fraud monitoring. Your data never leaves
+              our encrypted environment.
+            </motion.p>
+            <motion.ul className={styles.featureChecks} variants={fadeUp} custom={3}>
+              <li><CheckCircle2 size={16} /> 256-bit end-to-end encryption</li>
+              <li><CheckCircle2 size={16} /> OTP + biometric authentication</li>
+              <li><CheckCircle2 size={16} /> Real-time fraud detection & alerts</li>
+              <li><CheckCircle2 size={16} /> Automatic session timeout</li>
+            </motion.ul>
+          </div>
+
+          <motion.div className={styles.featureVisual} variants={fadeUp} custom={2}>
+            <div className={styles.featureCard}>
+              <div className={styles.securityVisual}>
+                <div className={styles.secShield}>
+                  <Lock size={32} />
+                </div>
+                <div className={styles.secBars}>
+                  <div className={styles.secBar}><CheckCircle2 size={14} /> SSL Certificate Active</div>
+                  <div className={styles.secBar}><CheckCircle2 size={14} /> OTP Verification Enabled</div>
+                  <div className={styles.secBar}><CheckCircle2 size={14} /> Device Authorization Active</div>
+                  <div className={styles.secBar}><CheckCircle2 size={14} /> Suspicious Activity Monitor</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
       </div>
     </section>
   );
 }
 
-// 2. Global Operations Map
-function GlobalOperations() {
-  // SVG coordinates for map nodes
-  const nodes = [
-    { x: 45, y: 40, name: "London" },
-    { x: 55, y: 55, name: "Dubai" },
-    { x: 53, y: 65, name: "Mogadishu" },
-    { x: 75, y: 45, name: "Hong Kong" },
-    { x: 25, y: 45, name: "New York" }
+/* ─────────────────────────────────────────────
+   4. CAPABILITIES GRID
+   ───────────────────────────────────────────── */
+function CapabilitiesGrid() {
+  const capabilities = [
+    { icon: <BarChart3 size={22} />,   title: "Real-Time Analytics",    desc: "Interactive dashboards with live balance updates, spending trends, and cash flow projections." },
+    { icon: <FileText size={22} />,     title: "Digital Statements",     desc: "Download and print formatted account statements for any date range instantly." },
+    { icon: <Users size={22} />,        title: "Multi-User Access",      desc: "Assign different access levels for employees, accountants, and business partners." },
+    { icon: <CreditCard size={22} />,   title: "Card Management",        desc: "Freeze, unfreeze, and set spending limits on your debit and credit cards instantly." },
+    { icon: <Smartphone size={22} />,   title: "e-Dahab Integration",    desc: "Deposit to and withdraw from your e-Dahab mobile wallet directly within the portal." },
+    { icon: <Clock size={22} />,        title: "Scheduled Payments",     desc: "Automate recurring bills, payroll, and vendor payments with flexible scheduling." },
   ];
 
   return (
-    <div className={styles.mapContainer}>
-       <div className={styles.mapText}>
-          <h2>Global Trade Facilitation.</h2>
-          <p>Banks accept deposits and lend them to business owners. Bank loans facilitate trade. Our internet banking connects your operations globally, seamlessly integrating with your e-Dahab account.</p>
-       </div>
-       
-       <div className={styles.mapVisual}>
-          <Image 
-            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-            alt="World Map"
-            fill
-            className={styles.worldImg}
-          />
-          <svg className={styles.mapOverlay} viewBox="0 0 100 100" preserveAspectRatio="none">
-             {/* Lines */}
-             <path d="M53,65 Q50,60 55,55" className={styles.dataLine} />
-             <path d="M53,65 Q45,55 45,40" className={styles.dataLine} />
-             <path d="M55,55 Q65,40 75,45" className={styles.dataLine} />
-             <path d="M45,40 Q35,30 25,45" className={styles.dataLine} />
-             
-             {/* Nodes */}
-             {nodes.map((n, i) => (
-                <circle key={i} cx={n.x} cy={n.y} r="1" className={styles.nodePoint} />
-             ))}
-          </svg>
-       </div>
-    </div>
+    <section className={styles.capSection}>
+      <div className={styles.capHeader}>
+        <motion.div
+          className={styles.capBadge}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Zap size={14} /> Full Capabilities
+        </motion.div>
+        <motion.h2
+          className={styles.capTitle}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          Everything You Need.<br />Nothing You Don&apos;t.
+        </motion.h2>
+      </div>
+
+      <div className={styles.capGrid}>
+        {capabilities.map((cap, i) => (
+          <motion.div
+            key={i}
+            className={styles.capCard}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ delay: i * 0.06, duration: 0.5 }}
+          >
+            <div className={styles.capIcon}>{cap.icon}</div>
+            <h3>{cap.title}</h3>
+            <p>{cap.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 }
 
-// 3. Enterprise Tools Grid
-function EnterpriseTools() {
-  const tools = [
-    { title: "e-Dahab Integration", icon: <ArrowRightLeft />, desc: "Instantly deposit and withdraw funds directly from your e-Dahab account." },
-    { title: "Business Transfers", icon: <Briefcase />, desc: "Execute high-volume B2B transfers to enhance enterprise growth." },
-    { title: "Secure OTP System", icon: <Key />, desc: "Dynamic One-Time Passwords required for secure session logins." },
-    { title: "Real-time Auditing", icon: <ShieldCheck />, desc: "Comprehensive transaction logs and printable statements." }
-  ];
-
+/* ─────────────────────────────────────────────
+   5. CTA
+   ───────────────────────────────────────────── */
+function CTASection() {
   return (
-    <div className={styles.toolsGrid}>
-       {tools.map((tool, i) => (
-          <div key={i} className={styles.toolCard}>
-             <div className={styles.tIcon}>{tool.icon}</div>
-             <div className={styles.tContent}>
-                <h3>{tool.title}</h3>
-                <p>{tool.desc}</p>
-             </div>
-             <div className={styles.tGlow} />
-          </div>
-       ))}
-    </div>
+    <section className={styles.ctaSection}>
+      <motion.div
+        className={styles.ctaBox}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className={styles.ctaTitle}>Ready to Take Control?</h2>
+        <p className={styles.ctaSub}>
+          Open your internet banking account today and experience the future of digital finance.
+        </p>
+        <div className={styles.ctaActions}>
+          <Link href="/auth/signup" className={styles.btnPrimary}>
+            Open an Account <ChevronRight size={16} />
+          </Link>
+          <Link href="/contact" className={styles.btnSecondary}>
+            Contact Sales
+          </Link>
+        </div>
+      </motion.div>
+    </section>
   );
 }
 
-// 4. Secure Gateway CTA
-function SecureGateway() {
-  return (
-    <div className={styles.gatewayBox}>
-       <div className={styles.gateInfo}>
-          <Shield className={styles.shieldIcon} size={48} />
-          <h2>The Secure<br/>Gateway.</h2>
-          <p>We prioritize your security. Monitor accounts remotely with confidence, backed by our dual SMS alert and OTP authentication system.</p>
-          <ul className={styles.secList}>
-             <li><CheckCircle2 size={16} /> End-to-end 256-bit encryption</li>
-             <li><CheckCircle2 size={16} /> Device authorization protocols</li>
-             <li><CheckCircle2 size={16} /> Suspicious activity lockouts</li>
-          </ul>
-       </div>
-       
-       <div className={styles.gateMockup}>
-          <div className={styles.loginPanel}>
-             <div className={styles.lpHeader}>
-                <Lock size={20} />
-                <span>Secure E-Banking</span>
-             </div>
-             <div className={styles.lpBody}>
-                <div className={styles.lpInput}>Corporate ID</div>
-                <div className={styles.lpInput}>Password</div>
-                <button className={styles.lpBtn}>
-                   Sign In <ChevronRight size={16} />
-                </button>
-                <div className={styles.lpFooter}>
-                   <span>Don&apos;t have an account?</span>
-                   <Link href="/contact" className={styles.lpLink}>Apply online</Link>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
-  );
-}
-
+/* ─────────────────────────────────────────────
+   PAGE EXPORT
+   ───────────────────────────────────────────── */
 export default function InternetBankingPage() {
   return (
     <main className={styles.main}>
-      
-      {/* 1. Command Center Hero */}
-      <CommandCenterHero />
+      <Hero />
+      <StatsBar />
+      <FeatureRows />
+      <CapabilitiesGrid />
+      <CTASection />
 
-      {/* 2. Global Operations Section */}
-      <section className={styles.mapSection}>
-         <GlobalOperations />
-      </section>
-
-      {/* 3. Enterprise Tools Section */}
-      <section className={styles.toolsSection}>
-         <div className={styles.sectionHeader}>
-            <div className={styles.badge}>Control Panel</div>
-            <h2>Enterprise-Grade Tools.</h2>
-         </div>
-         <EnterpriseTools />
-      </section>
-
-      {/* 4. Secure Gateway CTA */}
-      <section className={styles.gatewaySection}>
-         <SecureGateway />
-      </section>
-
-      {/* 5. Help Footer */}
       <section className={styles.helpSection}>
-         <p>Can&apos;t find what you&apos;re looking for?</p>
-         <Link href="mailto:Info@dahabshilbank.com" className={styles.emailBtn}>
-            Email Info@dahabshilbank.com
-         </Link>
+        <p>Can&apos;t find what you&apos;re looking for?</p>
+        <Link href="mailto:Info@dahabshilbank.com" className={styles.helpEmail}>
+          Email Info@dahabshilbank.com
+        </Link>
       </section>
-
     </main>
   );
 }
