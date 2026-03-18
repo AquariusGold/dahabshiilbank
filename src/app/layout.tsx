@@ -17,8 +17,6 @@ export const metadata: Metadata = {
   description: "Modern, secure, and intuitive digital banking platform.",
 };
 
-import { Navbar } from "@/components/layout/Navbar";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${outfit.variable} antialiased`}>
-        <Navbar />
         {children}
       </body>
     </html>
